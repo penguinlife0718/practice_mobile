@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
+import './App.css'
 import styled from 'styled-components';
-import './App.css';
+import { DropDownButton, DropDownSection } from './dropDown';
+import InputCheck from './InputCheck';
+// import {Column,Row} from './Rwd';
+import Kajima from './Kajima'
+import Cat from './Cat'
+
+import 'bootstrap/dist/css/bootstrap.css';
+import { Container, Row, Col } from 'reactstrap';
 
 class App extends Component {
   state = {
     inputStyleBorderColor: '#FFC7C7',
     dropDownHeight: 0
   }
+  
   onChange = (e) => {
     const length = e.target.value.length;
     if (length >= 4) {
@@ -21,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <BackGround>
-        <Input
+        <InputCheck
           inputStyleBorderColor={this.state.inputStyleBorderColor}
           onChange={this.onChange}
           placeholder="請輸入房號"
@@ -35,6 +44,15 @@ class App extends Component {
               <p>Selection 5</p>
               <p>Selection 6</p>
         </DropDownSection>
+        <Kajima></Kajima>
+        <Cat></Cat>
+        <Container>
+          <Row noGutters>
+            <Col xs={{size:11,offset:1}} md={{size:3,offset:1}}><Test/></Col>
+            <Col xs="12" md="4"><Test/></Col>
+            <Col xs="11" md="3"><Test/></Col>
+          </Row>
+        </Container>
       </BackGround>
     );
   }
@@ -45,57 +63,15 @@ export default App;
 const BackGround = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 
   width: 100%;
   height: 1000px;
 `
 
-const Input = styled.input`
-  width: 200px;
+const Test = styled.div`
+  width: 100%;
   height: 50px;
-  margin: 30px 0;
-  font-size: 16px;
-  text-align: center;
-  color: gray;
-  border-radius: 5px;
-  border: 5px solid ${props => props.inputStyleBorderColor};
+  border: 1px solid rgba(0,0,0,0.4);
 `
-const DropDownButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 200px;
-  height: 45px;
-  border: none;
-  border-radius: 4;
-  background-color: #7FDFD4;
-  color: #fff;
-  font-size: 24px;
-`
-const DropDownSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-    /* height: 100px; */
-    height: ${props => props.height}px;
-    margin: 0 0 10px 0;
-    overflow: hidden;
-    border: 1px solid #ededed;
-    transition: .5s ease-in-out;
-    font-size: 16px;
-    box-sizing: border-box;    
-    p {
-      display: flex;
-      align-items: center;
-      justify-content: center;    
-      min-height: 40px;
-      padding: 0;
-      margin: 0;
-      color: gray;
-      border-bottom: 1px solid #7FDFD4;
-      };
-`
+
